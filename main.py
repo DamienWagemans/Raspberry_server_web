@@ -1,16 +1,39 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import os
+import sys
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# if app.env == 'development':
+#     import FakeRPi.GPIO as GPIO
+# else:
+#     import RPi.GPIO as GPIO
+import time
+try:
+  os.environ['API_KEY']
+  print()
+except KeyError:
+  print('[error]: `API_KEY` environment variable required')
+  sys.exit(1)
+channel = 21
+
+# # GPIO setup
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(channel, GPIO.OUT)
+#
+#
+# def motor_on(pin):
+#     GPIO.output(pin, GPIO.HIGH)  # Turn motor on
 
 
-# Press the green button in the gutter to run the script.
+def motor_off(pin):
+    GPIO.output(pin, GPIO.LOW)  # Turn motor off
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    try:
+        motor_on(channel)
+        time.sleep(1)
+        motor_off(channel)
+        time.sleep(1)
+        GPIO.cleanup()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
