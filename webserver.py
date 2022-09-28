@@ -20,10 +20,10 @@ PIN = 4
 
 
 def switch_on(pin):
-    GPIO.output(pin, GPIO.HIGH)  # Turn motor on
+    GPIO.output(4, GPIO.HIGH)  # Turn motor on
 
 def switch_off(pin):
-    GPIO.output(pin, GPIO.LOW)  # Turn motor off
+    GPIO.output(4, GPIO.LOW)  # Turn motor off
 
 
 
@@ -53,6 +53,6 @@ def change_state(state):
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(PIN, GPIO.OUT)
+    GPIO.setup(4, GPIO.OUT)
     app.run(port=5000, debug=True)
 
