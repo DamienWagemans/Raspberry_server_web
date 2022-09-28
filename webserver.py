@@ -14,7 +14,7 @@ except ImportError:
 app = Flask(__name__)
 
 
-PIN = 0
+PIN = 4
 
 
 
@@ -52,7 +52,7 @@ def change_state(state):
 
 
 if __name__ == '__main__':
-    # GPIO.setmode(GPIO.BCM)
-    # GPIO.setup(PIN, GPIO.OUT)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PIN, GPIO.OUT)
     app.run(port=5000, debug=True)
 
